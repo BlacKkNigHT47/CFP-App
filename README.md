@@ -20,6 +20,7 @@ Start nenv
 
 Install @vue/cli
 ----------------
+```
 npm install -g @vue/cli
 
 git clone https://github.com/BlacKkNigHT47/CFP-App.git
@@ -27,21 +28,18 @@ git clone https://github.com/BlacKkNigHT47/CFP-App.git
 cd CFP-App
 
 npm install
-
+```
 If the above command fails...
-
+```
 npm install boostrap-vue
 
 npm i vue-cli-plugin-bootstrap-vue
-
+```
 
 ## Project setup
 ```
 npm install
 
-## When executing the following steps - if you encounter errors - try setting the below command
-
-export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
 ### Compiles and hot-reloads for development
@@ -57,6 +55,16 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+When you build/run if you get the below error, please run the following command
+```
+ Building for production...Error: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:67:19)
+    at Object.createHash (node:crypto:135:10)
+```
+```
+export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
 ### Customize configuration
