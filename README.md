@@ -23,11 +23,15 @@ Install @vue/cli
 npm install -g @vue/cli
 
 git clone https://github.com/BlacKkNigHT47/CFP-App.git
+
 cd CFP-App
+
 npm install
 
 If the above command fails...
+
 npm install boostrap-vue
+
 npm i vue-cli-plugin-bootstrap-vue
 
 
