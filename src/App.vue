@@ -37,58 +37,42 @@ export default {
     },
     methods: {
         update(){
- /*       
-            var lookUpTable = {
-              "8003340091471": {
-                                  "name": "Lindt Sprungli chocolate",
-                                  "country": "Switzerland",
-                                  "price": 6.00,
-                                  "CFPPrimary": 2.00,
-                                  "CFPGlobal": 10.00,
-                                  "CFPLocal":2.00,
-                                  "VAT":20.00
-                               },
-              "8906021122108": {
-                   
-                                  "name": "Achi's Cut Mango Pickle",
-                                  "country": "India",
-                                  "price": 2.49,
-                                  "CFPPrimary": 0.00,
-                                  "CFPGlobal": 20.00,
-                                  "CFPLocal":2.00,
-                                  "VAT":20.00
-                               }
-             };
-*/
-          console.log(lookUpTable[0]);
-          if (this.inputText != null) {
-            var item = this.inputText;
+        console.log(lookUpTable[0]);
+        if (this.inputText != null) {
+          var item = this.inputText;
 
-            if (lookUpTable[item]) {
-              var cost = parseFloat(lookUpTable[item].price).toFixed(2);
-              var vat = (cost*parseFloat(lookUpTable[item].VAT)*0.01).toFixed(2);
-              var cfpvat= (cost * 
-                           (parseFloat(lookUpTable[item].CFPPrimary)*0.01 +
-                            parseFloat(lookUpTable[item].CFPGlobal)*0.01 +
-                            parseFloat(lookUpTable[item].CFPLocal)*0.01) ).toFixed(2);
-              var total = parseFloat(cost) + 
-                  parseFloat(vat) + 
-                  parseFloat(cfpvat); 
-              total = total.toFixed(2);
-              console.log(cost, vat, cfpvat, total);
+          if (lookUpTable[item]) {
+            var cost = parseFloat(lookUpTable[item].price).toFixed(2);
+            var vat = (parseFloat(cost)*parseFloat(lookUpTable[item].VAT)*0.01).toFixed(2);
+            var cfpvat= (parseFloat(cost) * 
+                          (parseFloat(lookUpTable[item].CFPPrimary)*0.01 +
+                          parseFloat(lookUpTable[item].CFPGlobal)*0.01 +
+                          parseFloat(lookUpTable[item].CFPLocal)*0.01) ).toFixed(2);
+            var total = parseFloat(cost) + 
+                parseFloat(vat) + 
+                parseFloat(cfpvat); 
+            total = parseFloat(total.toFixed(2));
+            console.log(cost, vat, cfpvat, total);
             
             
-    this.items.push(
+          this.items.push(
                 {"Name":lookUpTable[item].name, 
                  "cost":cost, 
                  "Standard VAT":vat,
                  "CFP VAT": cfpvat,
                  "Total":total
                 });
+          } else {
+                this.items.push(
+                {"Name":"Unavailable", 
+                 "cost":"Unavailable", 
+                 "Standard VAT":"Unavailable",
+                 "CFP VAT": "Unavailable",
+                 "Total":"Unavailable"
+                });
           }
            this.inputText=null;
           }
-        
         }
     }
   }
