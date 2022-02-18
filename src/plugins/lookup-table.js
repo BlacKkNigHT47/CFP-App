@@ -17,6 +17,16 @@ var lookUpTable = {
                         "CFPGlobal": 20.00,
                         "CFPLocal":2.00,
                         "VAT":20.00
+                     },
+        "01771367": {
+         
+                        "name": "STRAWBERRIES by Sainsburys",
+                        "country": "Spain",
+                        "price": 2.00,
+                        "CFPPrimary": 0.00,
+                        "CFPGlobal": 20.00,
+                        "CFPLocal":2.00,
+                        "VAT":20.00
                      }
    };
 export default lookUpTable;
