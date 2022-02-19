@@ -15,8 +15,11 @@ nodeenv nenv
 
 Start nenv
 ----------
+```
 ./nenv/bin/activate
-
+In Windows
+nenv\Scripts\activate.bat
+```
 
 Install @vue/cli
 ----------------
