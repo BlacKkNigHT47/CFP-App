@@ -10,8 +10,9 @@
     <div>
       <b-table striped hover :items="items"></b-table>
     </div>
-  
     <b-input v-model="inputText" v-on:keyup.enter="update"> </b-input>
+    <b-button v-on:click="resetValue">clear</b-button>
+
   </div>
 </div>
 
@@ -73,6 +74,10 @@ export default {
           }
            this.inputText=null;
           }
+        },
+        resetValue() {
+          console.log("in the function - resetValue");
+          this.items=[];
         }
     }
   }
