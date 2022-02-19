@@ -12,6 +12,7 @@
     </div>
     <b-input v-model="inputText" v-on:keyup.enter="update"> </b-input>
     <b-button v-on:click="resetValue">clear</b-button>
+    <b-textarea v-model="outputText"> </b-textarea>
 
   </div>
 </div>
@@ -38,46 +39,55 @@ export default {
     },
     methods: {
         update(){
-        console.log(lookUpTable[0]);
         if (this.inputText != null) {
-          var item = this.inputText;
+          var gtin = this.inputText;
 
-          if (lookUpTable[item]) {
-            var cost = parseFloat(lookUpTable[item].price).toFixed(2);
-            var vat = (parseFloat(cost)*parseFloat(lookUpTable[item].VAT)*0.01).toFixed(2);
+          if (lookUpTable[gtin]) {
+            var cost = parseFloat(lookUpTable[gtin].price).toFixed(2);
+            var vat = (parseFloat(cost)*parseFloat(lookUpTable[gtin].VAT)*0.01).toFixed(2);
             var cfpvat= (parseFloat(cost) * 
-                          (parseFloat(lookUpTable[item].CFPPrimary)*0.01 +
-                          parseFloat(lookUpTable[item].CFPGlobal)*0.01 +
-                          parseFloat(lookUpTable[item].CFPLocal)*0.01) ).toFixed(2);
+                          (parseFloat(lookUpTable[gtin].CFPPrimary)*0.01 +
+                          parseFloat(lookUpTable[gtin].CFPGlobal)*0.01 +
+                          parseFloat(lookUpTable[gtin].CFPLocal)*0.01) ).toFixed(2);
             var total = parseFloat(cost) + 
                 parseFloat(vat) + 
                 parseFloat(cfpvat); 
             total = parseFloat(total.toFixed(2));
             console.log(cost, vat, cfpvat, total);
             
-            
-          this.items.push(
-                {"Name":lookUpTable[item].name, 
+          let duplicateItem = this.items.find(item => {
+             return item.Name == lookUpTable[gtin].name
+          });
+          if(duplicateItem) {
+            console.log("Before filter: this.items.length", this.items.length);
+            let items = (this.items).filter(item =>  item.Name !== lookUpTable[gtin].name);
+            console.log("After filter: this.items.length", items.length);
+            this.items = items;
+            duplicateItem.Quantity++;
+            duplicateItem.Total += total;
+            this.items.push(duplicateItem);
+          } else {
+            this.items.push(
+                {"Name":lookUpTable[gtin].name, 
+                 "Quantity": 1,
                  "cost":cost, 
                  "Standard VAT":vat,
                  "CFP VAT": cfpvat,
                  "Total":total
                 });
+            }
           } else {
-                this.items.push(
-                {"Name":"Unavailable", 
-                 "cost":"Unavailable", 
-                 "Standard VAT":"Unavailable",
-                 "CFP VAT": "Unavailable",
-                 "Total":"Unavailable"
-                });
+            console.log('Barcode not found');
           }
+           var totalCost = this.items.map(item => item.Total).reduce((acc, item) => item/1 + acc/1);
            this.inputText=null;
+           this.outputText = `Total: ${totalCost}`;
           }
         },
         resetValue() {
           console.log("in the function - resetValue");
           this.items=[];
+          this.outputText = "";
         }
     }
   }
