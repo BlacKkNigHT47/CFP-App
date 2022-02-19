@@ -66,8 +66,13 @@ When you build/run if you get the below error, please run the following command
     at new Hash (node:internal/crypto/hash:67:19)
     at Object.createHash (node:crypto:135:10)
 ```
+For Mac and Linux
 ```
 export NODE_OPTIONS=--openssl-legacy-provider
+```
+For Windows
+```
+set NODE_OPTIONS=--openssl-legacy-provider
 ```
 
 ### Customize configuration
