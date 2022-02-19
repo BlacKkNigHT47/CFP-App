@@ -11,7 +11,7 @@
       <b-table striped hover :items="items"></b-table>
     </div>
     <b-input v-model="inputText" v-on:keyup.enter="update"> </b-input>
-    <b-button v-on:click="resetValue">clear</b-button>
+    <b-button v-on:click="resetValue">Clear</b-button>
     <b-textarea v-model="outputText"> </b-textarea>
 
   </div>
