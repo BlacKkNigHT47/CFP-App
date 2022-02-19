@@ -11,8 +11,8 @@
         <b-table striped hover :items="items"></b-table>
       </div>
       <b-input v-model="inputText" v-on:keyup.enter="update"> </b-input>
-      <b-button v-on:click="resetValue">Clear</b-button>
-      <b-input v-model="outputText" readonly="true"> </b-input>
+      <b-input id= "display" v-model="outputText" readonly="true"> </b-input>
+      <b-button id="clear_button" v-on:click="resetValue">Clear</b-button>
     </div>
   </div>
 </template>
@@ -105,5 +105,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#display {
+  background: #ffffff;
+  font-family: 'Times New Roman', Times, sans-serif;
+  text-align: right;
+  font-size: 25px;
+  
+}
+#clear_button {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>
