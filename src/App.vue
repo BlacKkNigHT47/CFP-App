@@ -8,11 +8,19 @@
         </b-navbar>
       </div>
       <div>
-        <b-table striped hover :items="items"></b-table>
+        <b-table striped hover :items="items" foot-clone=true>
+            <template #foot(Total)>
+                <div class="has-text-right">
+                    {{outputText}}
+                </div>
+            </template>
+            <template #foot()>
+              <div></div>
+            </template>
+        </b-table>
       </div>
-      <b-input v-model="inputText" v-on:keyup.enter="update"> </b-input>
-      <b-input id= "display" v-model="outputText" readonly="true"> </b-input>
-      <b-button id="clear_button" v-on:click="resetValue">Clear</b-button>
+      <b-input id="main_input" v-model="inputText" v-on:keyup.enter="update"> </b-input>
+      <b-button v-if="items.length" id="clear_button" v-on:click="resetValue">Clear</b-button>
     </div>
   </div>
 </template>
