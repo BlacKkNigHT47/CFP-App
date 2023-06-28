@@ -91,5 +91,24 @@ var lookUpTable = {
    "CFPLocal":2.00,
    "VAT":2.00
 },
+   "5000119003843": {
+   "name": "Tesco - Crunchy Peanut Butter",
+   "country": "Ireland",
+   "price": 6.99,
+   "CFPPrimary": 2.50,
+   "CFPGlobal": 5.00,
+   "CFPLocal":2.00,
+   "VAT":2.00
+},
+      "5010251556305": {
+      "name": "Morrisons table-salt",
+      "country": "France",
+      "price": 2.99,
+      "CFPPrimary": 5.00,
+      "CFPGlobal": 5.00,
+      "CFPLocal":2.00,
+      "VAT":20.00
+   },
+
 };
 export default lookUpTable;
